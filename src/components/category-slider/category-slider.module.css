@@ -45,8 +45,8 @@
   }
 
   .slick-slide > div {
-    margin: 0 15px; /* Ajusta el margen para crear espacio */
-    padding: 0; /* Puedes ajustar el padding si es necesario */
+    margin: 0 15px;
+    padding: 0;
   }
 }
 

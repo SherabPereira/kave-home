@@ -15,7 +15,9 @@ export default function CategorySlider() {
     slidesToScroll: 3,
     draggable: true,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 6000,
+    centerMode: true,
+    centerPadding: '285px',
     responsive: [
       {
         breakpoint: 576,
@@ -24,15 +26,6 @@ export default function CategorySlider() {
           slidesToScroll: 2,
           centerMode: true,
           centerPadding: '65px'
-        }
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 2,
-          centerMode: true,
-          centerPadding: '30px'
         }
       }
     ]

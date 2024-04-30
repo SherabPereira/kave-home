@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { useProducts } from '@/context/products.context';
-import CategorySlider from '@/components/slider/category-slider';
+import CategorySlider from '@/components/category-slider/category-slider';
 import ProductsList from '@/components/products-list/products-list';
 import useScreenSize from '@/hooks/use-screen-size';
 
