@@ -1,0 +1,35 @@
+.favoritesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 0px 100px 50px 100px;
+}
+
+.favoritesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 100px;
+  flex-direction: column;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.favoritesHeader h1 {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 480px) {
+  .favoritesGrid {
+    grid-template-columns: 1fr;
+    padding: 0px 20px 20px 20px;
+  }
+
+  .favoritesHeader {
+    padding: 50px 20px;
+  }
+
+  .favoritesHeader h1 {
+    font-size: 28px;
+  }
+}

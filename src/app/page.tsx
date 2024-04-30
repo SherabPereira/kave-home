@@ -1,95 +1,72 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-export default function Home() {
+import { Product } from '@/types/product';
+import { useProducts } from '@/context/products.context';
+import CategorySlider from '@/components/slider/category-slider';
+import ProductsList from '@/components/products-list/products-list';
+import useScreenSize from '@/hooks/use-screen-size';
+
+import styles from './page.module.css';
+
+const PRODUCTS_PER_PAGE_MOBILE = 6;
+const PRODUCTS_PER_PAGE_DESKTOP = 9;
+
+export default function HomePage() {
+  const { products } = useProducts();
+  const [currentPage, setCurrentPage] = useState(0);
+  const [currentProducts, setCurrentProducts] = useState<Product[]>([]);
+
+  const isMobile = useScreenSize('s');
+
+  useEffect(() => {
+    const indexOfFirstProduct = currentPage * PRODUCTS_PER_PAGE_MOBILE;
+    const indexOfLastProduct = indexOfFirstProduct + PRODUCTS_PER_PAGE_MOBILE;
+    setCurrentProducts(products.slice(indexOfFirstProduct, indexOfLastProduct));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
+
+  const pageCount = Math.ceil(products.length / PRODUCTS_PER_PAGE_MOBILE);
+  // TODO
+  const handlePageClick = (data: { selected: number }) => {
+    setCurrentPage(data.selected);
+  };
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
+      <section className={styles.heroImage}>
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          src={isMobile ? '/img-small.svg' : '/img-big-home.svg'}
+          alt="Imagen de Cabecera"
+          layout="fill"
+          objectFit="cover"
         />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        <div className={styles.heroText}>
+          <h1>Cuando la realidad supera la ficción.</h1>
+          <h1>Trucos para estar en casa.</h1>
+        </div>
+      </section>
+      <section className={styles.categorySlider}>
+        <CategorySlider />
+      </section>
+      <section className={styles.productList}>
+        <ProductsList
+          productsData={
+            isMobile
+              ? currentProducts
+              : products.slice(0, PRODUCTS_PER_PAGE_DESKTOP)
+          }
+        />
+      </section>
+      <section className={styles.viewAllProducts}>
+        <div>
+          <Link href="/products" className={styles.viewAllProductsLink}>
+            Ver todos los productos
+          </Link>
+        </div>
+      </section>
     </main>
   );
 }

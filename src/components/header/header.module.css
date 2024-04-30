@@ -1,0 +1,33 @@
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #fff;
+  height: var(--header-height-desktop);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.favoriteIcon {
+  cursor: pointer;
+  margin-right: 30px;
+  margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+  .favoriteIcon {
+    cursor: pointer;
+    margin-right: 0px;
+    margin-top: 5px;
+  }
+
+  .header {
+    height: var(--header-height-mobile);
+  }
+
+  .logo a img {
+    width: 120px;
+  }
+}
