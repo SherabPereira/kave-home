@@ -6,7 +6,7 @@ import Pagination from '@/components/pagination/pagination';
 import { Product } from '@/types/product';
 import styles from './products.module.css';
 
-const PRODUCTS_PER_PAGE = 12;
+const PRODUCTS_PER_PAGE = 21;
 
 export default function ProductsPage() {
   const { products } = useProducts();
