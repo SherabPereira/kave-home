@@ -1,0 +1,34 @@
+.productCard {
+  position: relative;
+}
+
+.productImage {
+  width: 100%;
+  position: relative;
+  height: 300px;
+}
+
+.favoriteIcon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.productTitle {
+  color: var(--primary-color);
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.productPrice {
+  color: var(--primary-color);
+  margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+  .productCard {
+    margin-bottom: 20px;
+  }
+  
+}

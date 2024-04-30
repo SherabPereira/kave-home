@@ -1,0 +1,52 @@
+.slider {
+  text-align: center;
+
+}
+
+.slider a {
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+.slider h2 {
+  margin: 20px 0px;
+  padding: 5px 0px;
+  font-size: 26px;
+  color: var(--primary-color);
+}
+
+.sliderLinks {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.sliderLinks div {
+  background-color: #F5F5F5;
+  padding: 10px 15px;
+  margin: 5px 10px;
+}
+
+.imageItem a{
+  display: inline-block;
+  margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+  .sliderLinks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sliderLinks div {
+    padding: 6px 5px;
+  }
+
+  .slick-slide > div {
+    margin: 0 15px; /* Ajusta el margen para crear espacio */
+    padding: 0; /* Puedes ajustar el padding si es necesario */
+  }
+}
+

@@ -1,0 +1,36 @@
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 25px;
+  padding: 0px 100px 50px 100px;
+}
+
+.productsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 100px;
+  flex-direction: column;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.productsHeader h1 {
+  margin-bottom: 20px;
+}
+
+
+@media (max-width: 600px) {
+  .productsGrid {
+    grid-template-columns: 1fr;
+    padding: 0px 20px 20px 20px;
+  }
+
+  .productsHeader {
+    padding: 50px 20px;
+  }
+
+  .productsHeader h1 {
+    font-size: 28px;
+  }
+}
