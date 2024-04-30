@@ -231,7 +231,7 @@ export const productsList: Product[] = [
     },
     productPrice: '11.99',
     productPriceDiscount: 0,
-    productImageUrl: null,
+    productImageUrl: '',
     store: 'es',
     ecoPart: '0.00',
     productMaterials: '',
