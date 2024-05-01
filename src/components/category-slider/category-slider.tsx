@@ -1,4 +1,3 @@
-'use client';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -12,12 +11,9 @@ export default function CategorySlider() {
     infinite: true,
     speed: 500,
     slidesToShow: 6,
-    slidesToScroll: 3,
-    draggable: true,
-    autoplay: true,
-    autoplaySpeed: 6000,
-    centerMode: true,
-    centerPadding: '285px',
+    slidesToScroll: 6,
+    draggable: false,
+    autoplay: false,
     responsive: [
       {
         breakpoint: 576,
@@ -25,14 +21,15 @@ export default function CategorySlider() {
           slidesToShow: 1,
           slidesToScroll: 2,
           centerMode: true,
-          centerPadding: '65px'
+          centerPadding: '65px',
+          draggable: true,
         }
       }
     ]
   };
 
   return (
-    <div className={styles.slider}>
+    <div className={styles.sliderWrapper}>
       <div>
         <h2>Inspírate</h2>
         <div className={styles.sliderLinks}>
@@ -56,7 +53,7 @@ export default function CategorySlider() {
           </div>
         </div>
       </div>
-      <Slider {...settings}>
+      <Slider {...settings} className={styles.slider}>
         <div className={styles.imageItem}>
           <ImagePlaceholder />
           <a>We are Kave</a>
