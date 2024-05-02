@@ -37,7 +37,7 @@ export default function ProductDetailPage({
     <div className={styles.productContainer}>
       <div className={styles.imageWrapper}>
         <Image
-          src={isMobile ? '/img-small.svg' : '/img-big-home.svg'}
+          src={product.productImageUrl}
           alt={product.productName}
           layout="fill"
           objectFit="cover"

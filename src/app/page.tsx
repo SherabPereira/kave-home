@@ -9,7 +9,7 @@ import useScreenSize from '@/hooks/use-screen-size';
 
 import styles from './page.module.css';
 
-const PRODUCTS_PER_PAGE_DESKTOP = 9;
+const PRODUCTS_PER_PAGE = 9;
 
 export default function HomePage() {
   const { products } = useProducts();
@@ -34,7 +34,7 @@ export default function HomePage() {
       </section>
       <section className={styles.productList}>
         <ProductsList
-          productsData={ products.slice(0, PRODUCTS_PER_PAGE_DESKTOP)}
+          productsData={ products.slice(0, PRODUCTS_PER_PAGE)}
         />
       </section>
       <section className={styles.viewAllProducts}>
