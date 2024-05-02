@@ -21,7 +21,7 @@ export default function ProductsList({
           <Link href={`/products/${product.productSku}`}>
             <div className={styles.productImage} >
             <Image
-              src={'/product-img-skeleton.svg'}
+              src={ product.productImageUrl || '/product-img-skeleton.svg'}
               alt={product.productName}
               layout="fill"
               objectFit="cover"
