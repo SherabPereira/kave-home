@@ -1,7 +1,6 @@
 "use client";
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState, useEffect, useContext } from 'react';
 import { Product } from '@/types/product';
-import { productsList } from '@/lib/products-list'
 
 type ProductsContextType = {
   favorites: Product[];
@@ -19,7 +18,23 @@ export const ProductsContext = createContext<ProductsContextType>({
 
 export function ProductsProviderWrapper({ children }: { children: React.ReactNode }) {
   const [favorites, setFavorites] = useState<Product[]>([]);
-  const [products] = useState<Product[]>(productsList);
+  const [products, setProducts] = useState<Product[]>([]);
+
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('https://kavehome.com/nfeeds/es/es/templatebuilder/20240221');
+        const data = await response.json();
+        setProducts(data.results);
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
 
   const toggleFavorite = (product: Product) => {
     setFavorites((prevFavorites) => {
